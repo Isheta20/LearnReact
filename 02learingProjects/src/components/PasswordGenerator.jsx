@@ -73,7 +73,7 @@ const PasswordGenerator = () => {
             />
             <label>Length: {len}</label>
           </div>
-          <div className="flex items-center gap-1">
+          <div className="ml-1 flex items-center gap-1">
             <input
               type="checkbox"
               defaultChecked={noAllowed}
