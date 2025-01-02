@@ -1,4 +1,4 @@
-import { StrictMode } from "react";
+import { StrictMode} from "react";
 import { createRoot } from "react-dom/client";
 import {
   createBrowserRouter,
@@ -16,7 +16,9 @@ import User from "./components/User/User.jsx";
 import Github, { githubInfoLoader } from "./components/Github/Github.jsx";
 import ContextApi from "./components/ContextApi/ContextApi.jsx";
 import Login from "./components/Login/login.jsx";
-import UserContextProvider from "./context/UserContextProvider.jsx";
+import UserContextProvider from "./contexts/UserContextProvider.jsx";
+import { ThemeProvider } from "./contexts/ThemeProvider.jsx";
+import Card from "./components/Card/card.jsx";
 
 // const router = createBrowserRouter([
 //   {
@@ -49,14 +51,17 @@ const router = createBrowserRouter(
       <Route loader={githubInfoLoader} path="github" element={<Github />} />
       <Route path="login" element={<Login />} />
       <Route path="contextapi" element={<ContextApi />} />
+      <Route path="themeswitch" element={<Card/>} />
     </Route>
   )
 );
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <UserContextProvider>
-      <RouterProvider router={router} />
-    </UserContextProvider>
+    <ThemeProvider>
+      <UserContextProvider>
+        <RouterProvider router={router} />
+      </UserContextProvider>
+    </ThemeProvider>
   </StrictMode>
 );
